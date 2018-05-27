@@ -1,0 +1,12 @@
+{
+  "printWidth": 80,
+  "parser": "flow",
+  "overrides": [
+    {
+      "files": [".prettierrc", ".eslintrc", ".stylelintrc"],
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}

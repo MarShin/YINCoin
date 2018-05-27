@@ -1,0 +1,5 @@
+dist/
+build/
+Release/
+node_modules/
+flow-typed/
