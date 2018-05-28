@@ -8,31 +8,12 @@ Please install prettier and eslint plugin in your text editor/IDE before coding 
 * [React Native Elements](https://react-native-training.github.io/react-native-elements/
 * Frontend: ES6,Eslint, Redux
 
-## Quickstart
-
-### Setup
-
-```bash
-$ yarn add
-```
-
-### Run locally
-
-* development primarily on iOS simulator version 10
-
-```bash
-# run in developement mode (refreshes the app on source code changes)
-$ react-native run-ios --simulator="iPhone ios10"
-```
-
-* on Android - trigger emulator AVD without calling Android Studio
-
-```bash
-~/Library/Android/sdk/tools/emulator -list-avds
-~/Library/Android/sdk/tools/emulator -avd Pixel_2_API_23  https://stackoverflow.com/questions/42718973/run-avd-emulator-without-android-studio
-```
-
-Refer to trello (https://trello.com/b/Eg6jQsnI/yincoin) for tasks breakdown
+## Project Info
+* Refer to trello (https://trello.com/b/Eg6jQsnI/yincoin) for tasks breakdown
+* Branch naming with your_name/feature_name e.g. martin/firebase_auth
+* general flow branch out from `development/` to build feature, when read to push, pull latest `development/`, rebase (& squash commit) on top of development `git rebase -i development`, then `git push origin martin/firebase_auth` 
+* commit messages usually 3 categories 
+     ```feat(branch_name), refine(branch_name), fix(branch_name): fix button routing```
 
 # Incoporated React Native Firebase Starter<a href="https://rnfirebase.io"><img align="left" src="http://i.imgur.com/01XQL0x.png"></a>
 
