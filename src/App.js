@@ -1,5 +1,6 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
 // import { Provider } from 'react-redux';
 // import store from './config/store';
@@ -34,10 +35,21 @@ EStyleSheet.build({
   // $outline: 1,
 });
 
-export default () => <Root />;
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#40A3E2',
+    accent: 'yellow'
+  }
+};
 
-// export default () => (
-//   <Provider store={store}>
-//     <Root />
-//   </Provider>
-// );
+// export default () => <Root />;
+
+export default () => (
+  // <Provider store={store}>
+  <PaperProvider theme={theme}>
+    <Root />
+  </PaperProvider>
+  // </Provider>
+);
