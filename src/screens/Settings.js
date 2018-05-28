@@ -7,7 +7,7 @@ class Settings extends Component {
   render() {
     return (
       <ScrollView>
-        <List>
+        {/* <List>
           <ListItem title="電郵" rightTitle={this.props.email} />
           <ListItem title="手機號碼" rightTitle={this.props.phone} />
           <ListItem title="密碼設置" />
@@ -18,10 +18,14 @@ class Settings extends Component {
 
         <List>
           <ListItem title="關於" />
-        </List>
+        </List> */}
 
         <List>
-          <ListItem title="Sign Out" rightIcon={{ name: 'cancel' }} />
+          <ListItem
+            title="Sign Out"
+            rightIcon={{ name: 'cancel' }}
+            hideChevron
+          />
         </List>
       </ScrollView>
     );

@@ -18,15 +18,19 @@ class Me extends Component {
           caption={this.props.email}
         />
 
-        <Button title="設定" buttonStyle={{ marginTop: 20 }} onPress={this.handleSettingsPress} />
+        <Button
+          title="設定"
+          buttonStyle={{ marginTop: 20 }}
+          onPress={this.handleSettingsPress}
+        />
 
-        <List>
+        {/* <List>
           <ListItem title="消費紀錄" />
           <ListItem title="信用卡管理" />
           <ListItem title="餘額增值 / 直接買幣功能" />
           <ListItem title="客服" />
           <ListItem title="身分認證" />
-        </List>
+        </List> */}
       </ScrollView>
     );
   }
