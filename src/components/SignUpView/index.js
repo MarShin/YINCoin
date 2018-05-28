@@ -88,7 +88,7 @@ class SignUpView extends React.Component<{ firebase: any }> {
         >
           <Button
             style={styles.button}
-            onPress={this.handleSignUp}
+            // onPress={this.handleSignUp}
             primary
             dark
             raised
@@ -97,7 +97,7 @@ class SignUpView extends React.Component<{ firebase: any }> {
           </Button>
           <Button
             style={styles.button}
-            onPress={this.handleSignIn}
+            // onPress={this.handleSignIn}
             primary
             dark
             raised
@@ -129,4 +129,5 @@ class SignUpView extends React.Component<{ firebase: any }> {
   }
 }
 
-export default firebaseConnect()(SignUpView);
+// export default firebaseConnect()(SignUpView);
+export default SignUpView;

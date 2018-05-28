@@ -9,8 +9,8 @@ import Home from '../screens/Home';
 import Settings from '../screens/Settings';
 import Me from '../screens/Me';
 
-// import Login from '../screens/Login';
-// import Loading from '../screens/Loading';
+import Login from '../screens/Login';
+import Loading from '../screens/Loading';
 
 export const LandingStack = createStackNavigator(
   { Home },
@@ -76,5 +76,7 @@ export const AppNavigator = createStackNavigator(
 );
 
 export const Root = createSwitchNavigator({
+  Loading,
+  Login,
   AppNavigator
 });
