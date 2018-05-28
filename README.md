@@ -61,8 +61,8 @@ The official Starter kit ReadMe availble [here](https://github.com/invertase/rea
 * 3.1) **[iOS]** Download `.plist` file from Firebase Console
 * 3.2 Drag the file into XCode Project into Main app, linked in XCode to **all targets**. If you happen to delete it just download again from the console. The file contains API key & other developer app info to connect to Firebase.
 
-* 3.2) **[Android]** Follow the `manually add firebase` to your app instructions [here](https://firebase.google.com/docs/android/setup#manually_add_firebase) to generate your `google-services.json` file if you haven't done so already - use the package name generated previously as your `Android package name`.
-* 3.3) Place this file in the `android/app/` directory of your project.
+* 3.3) **[Android]** Follow the `manually add firebase` to your app instructions [here](https://firebase.google.com/docs/android/setup#manually_add_firebase) to generate your `google-services.json` file if you haven't done so already - use the package name generated previously as your `Android package name`.
+* 3.4) Place this file in the `android/app/` directory of your project.
 
 #### 4) Start your app
 * can follow below or just run `react-native run-ios` like how we usually do.
