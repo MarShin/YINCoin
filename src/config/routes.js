@@ -1,16 +1,16 @@
-import React from 'react';
 import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-import { createMaterialIcon } from '../utils/createIcon';
+// TODO: disable icon for now until fix MatieralIcon error
+// import { createMaterialIcon } from '../utils/createIcon';
 
 import Home from '../screens/Home';
 
 import Settings from '../screens/Settings';
 import Me from '../screens/Me';
 
-// import Login from '../screens/Login';
-// import Loading from '../screens/Loading';
+import Login from '../screens/Login';
+import Loading from '../screens/Loading';
 
 export const LandingStack = createStackNavigator(
   { Home },
@@ -34,7 +34,7 @@ export const MeStack = createStackNavigator({
   }
 });
 
-export const BottomTabNavigator = createMaterialBottomTabNavigator(
+export const HomeNavigator = createMaterialBottomTabNavigator(
   {
     Landing: {
       screen: LandingStack,
@@ -68,13 +68,20 @@ export const BottomTabNavigator = createMaterialBottomTabNavigator(
 
 export const AppNavigator = createStackNavigator(
   {
-    BottomTabNavigator
+    HomeNavigator
   },
   {
     headerMode: 'none'
   }
 );
 
-export const Root = createSwitchNavigator({
-  AppNavigator
-});
+export const Root = createSwitchNavigator(
+  {
+    Loading,
+    Login,
+    AppNavigator
+  },
+  {
+    initialRouteName: 'Loading'
+  }
+);

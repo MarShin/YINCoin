@@ -105,25 +105,6 @@ class SignUpView extends React.Component<{ firebase: any }> {
             Log In
           </Button>
         </View>
-        <Text
-          style={{
-            fontSize: 16,
-            color: '#FFFFFF',
-            alignSelf: 'center',
-            marginBottom: 16
-          }}
-        >
-          Or use your social network
-        </Text>
-        {/* <Button
-          icon={createMaterialCommunityIcon('facebook', 'white', 16)}
-          onPress={loginWithFb}
-          color="#3b5998"
-          dark
-          raised
-        >
-          Continue with Facebook
-        </Button> */}
       </View>
     );
   }

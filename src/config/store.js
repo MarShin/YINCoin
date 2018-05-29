@@ -1,20 +1,32 @@
-import { createStore, applyMiddleware } from 'redux';
-// import logger from 'redux-logger';
+// @flow
+import { compose, createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import rootReducer from '../reducers'; // redux reducer defines the shape of global data store
+import firebase from 'react-native-firebase';
+import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
 
-// const middleware = [];
-// if (process.env.NODE_ENV === 'development') {
-//   middleware.push(logger);
-// }
+import rootReducer from '../reducers';
 
-// const store = createStore(reducer, applyMiddleware(...middleware));
+const initialState = {};
+
+const reduxFirebaseConfig = {
+  userProfile: 'mobile-users',
+  enableRedirectHandling: false,
+  enableLogging: false
+  // useFirestoreForProfile: true
+};
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunkMiddleware, createLogger())
+  initialState,
+  compose(
+    reactReduxFirebase(firebase.app(), reduxFirebaseConfig),
+    applyMiddleware(
+      thunkMiddleware.withExtraArgument(getFirebase),
+      createLogger()
+    )
+  )
 );
 
 export default store;
