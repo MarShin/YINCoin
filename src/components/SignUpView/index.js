@@ -4,12 +4,20 @@ import { View, Image, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { firebaseConnect } from 'react-redux-firebase';
 
-import { createMaterialCommunityIcon } from '../../utils/createIcon';
-// import loginWithFb from './loginWithFb';
 import styles from './styles';
 
+// TODO: KEYBOARD AVOID VIEW WHEN ENTER FORM - TEXT INPUT UNSCROLLABLE
+
 class SignUpView extends React.Component<{ firebase: any }> {
-  state = { email: '', password: '', errorMessage: null };
+  state = {
+    email: '',
+    password: '',
+    referrer: '',
+    firstName: '',
+    lastName: '',
+    mobilePhone: '',
+    errorMessage: null
+  };
 
   handleSignUp = () => {
     const { email, password } = this.state;
@@ -33,7 +41,13 @@ class SignUpView extends React.Component<{ firebase: any }> {
     return (
       <View style={styles.container}>
         <Image
-          style={{ alignSelf: 'center', marginBottom: 32 }}
+          style={{
+            alignSelf: 'center',
+            // marginBottom: 20,
+            width: 120,
+            height: 120,
+            resizeMode: 'contain'
+          }}
           source={require('../../images/logo.png')}
         />
         {this.state.errorMessage ? (
@@ -45,18 +59,30 @@ class SignUpView extends React.Component<{ firebase: any }> {
             Create or sign in your account
           </Text>
         )}
+
+        <TextInput
+          label="Refferer"
+          placeholder="YINCoin_123"
+          autoCapitalize="none"
+          value={this.state.referrer}
+          onChangeText={referrer => this.setState({ referrer })}
+          theme={{
+            colors: {
+              disabled: '#b4c1c8',
+              placeholder: '#b4c1c8'
+            }
+          }}
+        />
         <TextInput
           label="Email"
-          placeholder="brain@pick.com"
+          placeholder="yin@coin.com"
           autoCapitalize="none"
           value={this.state.email}
           onChangeText={email => this.setState({ email })}
-          keyboardAppearance="dark"
+          // keyboardAppearance="dark"
           theme={{
-            dark: true,
             colors: {
               disabled: '#b4c1c8',
-              text: '#FFFFFF',
               placeholder: '#b4c1c8'
             }
           }}
@@ -67,17 +93,56 @@ class SignUpView extends React.Component<{ firebase: any }> {
           autoCapitalize="none"
           value={this.state.password}
           onChangeText={password => this.setState({ password })}
-          keyboardAppearance="dark"
+          // keyboardAppearance="dark"
           secureTextEntry
           theme={{
-            dark: true,
             colors: {
               disabled: '#b4c1c8',
-              text: '#FFFFFF',
               placeholder: '#b4c1c8'
             }
           }}
         />
+        <TextInput
+          label="First Name"
+          placeholder="Yin"
+          autoCapitalize="none"
+          value={this.state.firstName}
+          onChangeText={firstName => this.setState({ firstName })}
+          theme={{
+            colors: {
+              disabled: '#b4c1c8',
+              placeholder: '#b4c1c8'
+            }
+          }}
+        />
+
+        <TextInput
+          label="Last Name"
+          placeholder="Coin"
+          autoCapitalize="none"
+          value={this.state.lastName}
+          onChangeText={lastName => this.setState({ lastName })}
+          theme={{
+            colors: {
+              disabled: '#b4c1c8',
+              placeholder: '#b4c1c8'
+            }
+          }}
+        />
+        <TextInput
+          label="Mobile Phone"
+          placeholder="12345678"
+          autoCapitalize="none"
+          value={this.state.mobilePhone}
+          onChangeText={mobilePhone => this.setState({ mobilePhone })}
+          theme={{
+            colors: {
+              disabled: '#b4c1c8',
+              placeholder: '#b4c1c8'
+            }
+          }}
+        />
+
         <View
           style={{
             flexDirection: 'row',

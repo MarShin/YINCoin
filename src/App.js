@@ -9,38 +9,36 @@ import { Root } from './config/routes';
 
 YellowBox.ignoreWarnings([
   'Warning: isMounted(...) is deprecated',
-  'RCTImageLoader'
+  'Module RCTImageLoader requires'
 ]);
 
 EStyleSheet.build({
-  $darkBlue: '#142026',
-  $regularBlue: '#22455B',
-  $lightBlue: '#2089dc',
-  $paleBlue: '#ADC7D4',
+  $darkRed: '#5A110D',
+  $regularRed: '#C02437',
+  $lightRed: '#E72B22',
+  $paleRed: '#D67582',
+  $darkGray: '#2C2C2C',
+  $regularGray: '#686F79',
+  $lightGray: '#8C8C8C',
+  $paleGray: '#F0EFF5',
   $darkGreen: '#258E77',
   $regularGreen: '#45BFA3',
   $lightGreen: '#50E3C2',
   $darkOrange: '#F59223',
   $regularOrange: '#F5BC23',
   $lightOrange: '#FFCC2D',
-  $darkGray: '#2C2C2C',
-  $regularGray: '#686F79',
-  $lightGray: '#8C8C8C',
-  $paleGray: '#F0EFF5',
 
-  $white: '#FFFFFF',
-
-  $border: '#979797',
-  $inputText: '#797979'
-  // $outline: 1,
+  $white: '#FFFFFF'
+  // $outline: 1
 });
 
 const theme = {
   ...DefaultTheme,
+  dark: false,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#40A3E2',
-    accent: 'yellow'
+    primary: '#E72B22',
+    accent: '#F0EFF5'
   }
 };
 
