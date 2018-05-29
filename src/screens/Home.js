@@ -1,8 +1,8 @@
+// @flow
 import React, { Component } from 'react';
 import { StatusBar, KeyboardAvoidingView } from 'react-native';
 // import EStyleSheet from 'react-native-extended-stylesheet';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { Container } from '../components/Container';
 import { TaskBanner } from '../components/TaskBanner';
@@ -30,5 +30,4 @@ class Home extends Component {
   }
 }
 
-// export default connect(state => state)(Home);
 export default Home;
