@@ -11,8 +11,9 @@ import rootReducer from '../reducers';
 const initialState = {};
 
 const reduxFirebaseConfig = {
-  userProfile: 'users',
-  enableRedirectHandling: false
+  userProfile: 'mobile-users',
+  enableRedirectHandling: false,
+  enableLogging: false
   // useFirestoreForProfile: true
 };
 

@@ -111,4 +111,3 @@ class SignUpView extends React.Component<{ firebase: any }> {
 }
 
 export default firebaseConnect()(SignUpView);
-// export default SignUpView;
