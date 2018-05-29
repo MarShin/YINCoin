@@ -1,15 +1,15 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import { Provider as ReduxProvider } from 'react-redux';
 
-// import { Provider } from 'react-redux';
-// import store from './config/store';
 import { YellowBox } from 'react-native';
+import store from './config/store';
 import { Root } from './config/routes';
 
 YellowBox.ignoreWarnings([
   'Warning: isMounted(...) is deprecated',
-  'Module RCTImageLoader'
+  'RCTImageLoader'
 ]);
 
 EStyleSheet.build({
@@ -47,9 +47,9 @@ const theme = {
 // export default () => <Root />;
 
 export default () => (
-  // <Provider store={store}>
-  <PaperProvider theme={theme}>
-    <Root />
-  </PaperProvider>
-  // </Provider>
+  <ReduxProvider store={store}>
+    <PaperProvider theme={theme}>
+      <Root />
+    </PaperProvider>
+  </ReduxProvider>
 );
