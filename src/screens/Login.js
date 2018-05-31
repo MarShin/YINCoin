@@ -1,24 +1,52 @@
 // @flow
 import * as React from 'react';
-import { StatusBar, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import {
+  Text,
+  StatusBar,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
+import { withFirebase, firebaseConnect } from 'react-redux-firebase';
+import { compose } from 'recompose';
+import { withNavigation } from 'react-navigation';
 
 import Background from '../components/Background';
-import SignUpView from '../components/SignUpView';
+import { LogInView } from '../components/Auth';
 
-const Login = () => (
-  <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <Background
-      backgroundColor="#FFFFFF"
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      <StatusBar barStyle="light-content" />
-      <SignUpView />
-    </Background>
-  </TouchableWithoutFeedback>
-);
+class LogIn extends React.Component<{ firebase: any }> {
+  state = {
+    email: '',
+    password: '',
+    errorMessage: null
+  };
 
-export default Login;
+  handleSignIn = () => {
+    const { email, password } = this.state;
+    this.props.firebase
+      .auth()
+      .signInAndRetrieveDataWithEmailAndPassword(email, password)
+      .then(() => {})
+      .catch(error => this.setState({ errorMessage: error.message }));
+  };
+
+  render() {
+    return (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Background
+          backgroundColor="#FFFFFF"
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <StatusBar barStyle="light-content" />
+          <LogInView />
+        </Background>
+      </TouchableWithoutFeedback>
+    );
+  }
+}
+
+export default LogIn;

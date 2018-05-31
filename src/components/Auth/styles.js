@@ -7,6 +7,13 @@ export default EStyleSheet.create({
     justifyContent: 'center',
     width: 260
   },
+  logo: {
+    alignSelf: 'center',
+    // marginBottom: 20,
+    width: 120,
+    height: 120,
+    resizeMode: 'contain'
+  },
   button: {
     width: 124,
     marginTop: 24

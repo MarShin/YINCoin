@@ -6,6 +6,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { YellowBox } from 'react-native';
 import store from './config/store';
 import { Root } from './config/routes';
+import { AlertProvider } from './components/Alert';
 
 YellowBox.ignoreWarnings([
   'Warning: isMounted(...) is deprecated',
@@ -47,7 +48,9 @@ const theme = {
 export default () => (
   <ReduxProvider store={store}>
     <PaperProvider theme={theme}>
-      <Root />
+      <AlertProvider>
+        <Root />
+      </AlertProvider>
     </PaperProvider>
   </ReduxProvider>
 );
