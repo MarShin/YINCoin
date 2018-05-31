@@ -1,33 +1,44 @@
 // @flow
-import React, { Component } from 'react';
-import { StatusBar, KeyboardAvoidingView } from 'react-native';
-// import EStyleSheet from 'react-native-extended-stylesheet';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { Dimensions, StatusBar, StyleSheet } from 'react-native';
+import { FAB } from 'react-native-paper';
 
-import { Container } from '../components/Container';
-import { TaskBanner } from '../components/TaskBanner';
+import Background from '../components/Background/';
+import { WelcomeBanner } from '../components/WelcomeBanner';
 import { CardContainer } from '../components/CardContainer';
 
-class Home extends Component {
-  static propTypes = {
-    navigation: PropTypes.object
-  };
+const PhoneButton = () => (
+  <FAB style={styles.fab} medium icon="phone" onPress={() => {}} />
+);
 
-  handleSwapCurrency = () => {
-    console.log('press swap currency');
-  };
+const fabTop = Dimensions.get('window').height * 0.8;
+const fabLeft = Dimensions.get('window').width * 0.555;
 
-  render() {
-    return (
-      <Container>
-        <StatusBar translucent={false} barStyle="light-content" />
-        <KeyboardAvoidingView behavior="padding">
-          <TaskBanner navigation={this.props.navigation} />
-          <CardContainer />
-        </KeyboardAvoidingView>
-      </Container>
-    );
+const styles = StyleSheet.create({
+  fab: {
+    marginHorizontal: 100,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    zIndex: 10,
+    position: 'absolute',
+    top: fabTop,
+    left: fabLeft,
+    backgroundColor: '#E72B22'
   }
-}
+});
+
+const Home = () => (
+  <Background backgroundColor="#F5F8FA">
+    <StatusBar
+      translucent={false}
+      barStyle="light-content"
+      backgroundColor="#F5F8FA"
+    />
+    <WelcomeBanner />
+    <CardContainer />
+    <PhoneButton />
+  </Background>
+);
 
 export default Home;

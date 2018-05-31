@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
+import { TextInput, Button } from 'react-native-paper';
+import { firebaseConnect } from 'react-redux-firebase';
 import { me } from '../config/data';
 
-class Settings extends Component {
+class Settings extends React.Component<{ firebase: any }> {
+  state = { email: '', password: '', errorMessage: null };
+
+  handleSignOut = () => {
+    const { email, password } = this.state;
+    this.props.firebase
+      .auth()
+      .signOut()
+      .then(() => {})
+      .catch(error => this.setState({ errorMessage: error.message }));
+  };
+
   render() {
     return (
       <ScrollView>
-        {/* <List>
+        <List>
           <ListItem title="電郵" rightTitle={this.props.email} />
           <ListItem title="手機號碼" rightTitle={this.props.phone} />
           <ListItem title="密碼設置" />
@@ -18,13 +31,14 @@ class Settings extends Component {
 
         <List>
           <ListItem title="關於" />
-        </List> */}
+        </List>
 
         <List>
           <ListItem
             title="Sign Out"
             rightIcon={{ name: 'cancel' }}
             hideChevron
+            onPress={this.handleSignOut}
           />
         </List>
       </ScrollView>
@@ -32,6 +46,13 @@ class Settings extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  button: {
+    width: 124,
+    marginTop: 24
+  }
+});
+
 Settings.defaultProps = { ...me };
 
-export default Settings;
+export default firebaseConnect()(Settings);

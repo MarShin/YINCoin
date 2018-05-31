@@ -1,37 +1,102 @@
 import React, { Component } from 'react';
-import { View, Text, Image, FlatList } from 'react-native';
-import { List, Card, Button } from 'react-native-elements';
-import styles from './styles';
-
-import { IconButton } from '../Button';
+import { ScrollView, StyleSheet } from 'react-native';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardCover,
+  Title,
+  Paragraph,
+  FABGroup
+} from 'react-native-paper';
+import { withNavigation } from 'react-navigation';
 
 class CardContainer extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  handleCoupons = () => {
-    console.log('press coupons');
+  state = {
+    open: false,
+    isFocused: false
   };
 
+  componentDidMount() {
+    this.props.navigation.addListener('didFocus', () => {
+      this.setState({ isFocused: true });
+    });
+    this.props.navigation.addListener('willBlur', () => {
+      this.setState({ isFocused: false });
+    });
+  }
+
   render() {
-    const couponsImg = require('./images/coupons.png');
+    const FAB = (
+      <FABGroup
+        style={styles.fabContainer}
+        open={this.state.open}
+        icon={this.state.open ? 'phone' : 'add'}
+        label="Email"
+        actions={[
+          { icon: 'email', label: 'Email', onPress: () => {} },
+          { icon: 'notifications', label: 'Remind', onPress: () => {} }
+        ]}
+        onStateChange={({ open }) => this.setState({ open })}
+        onPress={() => {
+          if (this.state.open) {
+            // do something if the speed dial is open
+            console.log('specifically press phone button');
+          }
+        }}
+      />
+    );
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Powered by Tencent</Text>
-        <View style={styles.iconContainer}>
-          <IconButton
-            iconName="coupons"
-            text="優惠券"
-            onPress={this.handleCoupons}
-            iconImage={styles.iconImage}
-            iconText={styles.iconText}
-            imageSource={couponsImg}
-          />
-        </View>
-      </View>
+      <ScrollView style={styles.container}>
+        <Card>
+          <CardContent>
+            <Title>Card title</Title>
+            <Paragraph>Card content</Paragraph>
+          </CardContent>
+          <CardCover source={{ uri: 'https://picsum.photos/300' }} />
+          <CardActions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </CardActions>
+        </Card>
+        <Card>
+          <CardContent>
+            <Title>Card title</Title>
+            <Paragraph>Card content</Paragraph>
+          </CardContent>
+          <CardCover source={{ uri: 'https://picsum.photos/400' }} />
+          <CardActions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </CardActions>
+        </Card>
+        {/* {this.state.isFocused ? FAB : null} */}
+      </ScrollView>
     );
   }
 }
 
-export default CardContainer;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  row: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  fabContainer: {
+    marginHorizontal: 24,
+    marginBottom: 16,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    zIndex: 10,
+    backgroundColor: 'blue',
+    color: 'red'
+  }
+});
+
+export default withNavigation(CardContainer);

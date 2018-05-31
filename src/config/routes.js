@@ -1,13 +1,17 @@
 import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-// TODO: disable icon for now until fix MatieralIcon error
-// import { createMaterialIcon } from '../utils/createIcon';
+import {
+  createMaterialIcon,
+  createMaterialCommunityIcon
+} from '../utils/createIcon';
 
 import Home from '../screens/Home';
 
 import Settings from '../screens/Settings';
 import Me from '../screens/Me';
+import Transactions from '../screens/Transactions';
+import Contacts from '../screens/Contacts';
 
 import Login from '../screens/Login';
 import Loading from '../screens/Loading';
@@ -39,30 +43,45 @@ export const HomeNavigator = createMaterialBottomTabNavigator(
     Landing: {
       screen: LandingStack,
       navigationOptions: {
-        tabBarLabel: '首頁'
+        tabBarLabel: '首頁',
+        tabBarIcon: ({ tintColor }) => createMaterialIcon('home', tintColor, 24)
+      }
+    },
+    Transactions: {
+      screen: Transactions,
+      navigationOptions: {
+        tabBarLabel: '交易',
+        tabBarIcon: ({ tintColor }) => createMaterialIcon('info', tintColor, 24)
+      }
+    },
+    Contacts: {
+      screen: Contacts,
+      navigationOptions: {
+        tabBarLabel: '朋友',
+        tabBarIcon: ({ tintColor }) =>
+          createMaterialIcon('people', tintColor, 24)
       }
     },
     Me: {
       screen: MeStack,
       navigationOptions: {
         tabBarLabel: '我的',
-        // commented for now until found solution for 'materialIcons' not found error
-        // tabBarIcon: ({ tintColor }) =>
-        //   createMaterialIcon('explore', tintColor, 24),
-        tabBarColor: '#374B57'
+        tabBarIcon: ({ tintColor }) =>
+          createMaterialIcon('person', tintColor, 24)
       }
     }
   },
   {
     initialRouteName: 'Landing',
-    activeTintColor: '#FFFFFF',
+    activeTintColor: '#E72B22',
     barStyle: {
-      backgroundColor: '#374B57',
+      backgroundColor: '#F0EFF5',
       shadowColor: '#000',
-      shadowOffset: { width: 0, height: 4 },
+      shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.5,
-      shadowRadius: 4
-    }
+      shadowRadius: 3
+    },
+    shifting: false
   }
 );
 

@@ -8,7 +8,7 @@ import SignUpView from '../components/SignUpView';
 const Login = () => (
   <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <Background
-      backgroundColor="#374B57"
+      backgroundColor="#FFFFFF"
       style={{
         flex: 1,
         alignItems: 'center',

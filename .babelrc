@@ -8,6 +8,9 @@
       "plugins": [
         "transform-react-jsx-source"
       ]
+    },
+    "production": {
+      "plugins": ["react-native-paper/babel"]
     }
   }
 }
