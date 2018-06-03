@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
-import { Tile, List, ListItem, Button } from 'react-native-elements';
-import { me } from '../config/data';
+import { ScrollView, StyleSheet } from 'react-native';
+import { List, ListItem } from 'react-native-elements';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+
+import Balance from '../components/Balance';
 
 class Me extends Component {
   handleSettingsPress = () => {
@@ -11,31 +15,29 @@ class Me extends Component {
   render() {
     return (
       <ScrollView>
-        <Tile
-          imageSrc={{ uri: this.props.picture.large }}
-          featured
-          title={`${this.props.name.first.toUpperCase()} ${this.props.name.last.toUpperCase()}`}
-          caption={this.props.email}
-        />
-
-        <Button
-          title="設定"
-          buttonStyle={{ marginTop: 20 }}
-          onPress={this.handleSettingsPress}
-        />
-
-        {/* <List>
-          <ListItem title="消費紀錄" />
-          <ListItem title="信用卡管理" />
-          <ListItem title="餘額增值 / 直接買幣功能" />
+        <Balance uid={this.props.auth.uid} />
+        <List>
+          <ListItem title="設定" onPress={this.handleSettingsPress} />
           <ListItem title="客服" />
+          <ListItem title="餘額增值 / 直接買幣功能" />
           <ListItem title="身分認證" />
-        </List> */}
+        </List>
       </ScrollView>
     );
   }
 }
+const styles = StyleSheet.create({
+  paper: {
+    padding: 8,
+    height: 80,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4
+  }
+});
 
-Me.defaultProps = { ...me };
-
-export default Me;
+export default compose(connect((state, props) => ({
+  auth: state.firebase.auth,
+  profile: state.firebase.profile // TODO: not sure why empty
+})))(Me);

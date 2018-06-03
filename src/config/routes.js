@@ -13,8 +13,9 @@ import Me from '../screens/Me';
 import Transactions from '../screens/Transactions';
 import Contacts from '../screens/Contacts';
 
-import Login from '../screens/Login';
+import LogIn from '../screens/LogIn';
 import Loading from '../screens/Loading';
+import SignUp from '../screens/SignUp';
 
 export const LandingStack = createStackNavigator(
   { Home },
@@ -97,7 +98,8 @@ export const AppNavigator = createStackNavigator(
 export const Root = createSwitchNavigator(
   {
     Loading,
-    Login,
+    SignUp,
+    LogIn,
     AppNavigator
   },
   {

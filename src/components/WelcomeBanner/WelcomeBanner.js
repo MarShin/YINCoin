@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import { Toolbar, ToolbarContent, ToolbarAction } from 'react-native-paper';
+
 import styles from './styles';
 
 class WelcomeBanner extends Component {
@@ -13,6 +14,7 @@ class WelcomeBanner extends Component {
   };
 
   render() {
+    console.log('Welcome banner: ', this.props.profile);
     return (
       <Toolbar style={styles.container}>
         <ToolbarContent title="Welcome!" subtitle="Martin Shin" />
@@ -23,4 +25,5 @@ class WelcomeBanner extends Component {
   }
 }
 
-export default WelcomeBanner;
+// export default WelcomeBanner;
+export default connect(({ firebase: { profile } }) => ({ profile }))(WelcomeBanner);

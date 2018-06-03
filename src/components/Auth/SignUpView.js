@@ -2,8 +2,12 @@
 import * as React from 'react';
 import { View, Image, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-import { firebaseConnect } from 'react-redux-firebase';
+import { withFirebase, firebaseConnect } from 'react-redux-firebase';
+import { compose } from 'recompose';
+import { withNavigation } from 'react-navigation';
 
+import { checkReferrerExist } from '../../actions/users';
+import { connectAlert } from '../Alert';
 import styles from './styles';
 
 // TODO: KEYBOARD AVOID VIEW WHEN ENTER FORM - TEXT INPUT UNSCROLLABLE
@@ -16,52 +20,53 @@ class SignUpView extends React.Component<{ firebase: any }> {
     firstName: '',
     lastName: '',
     mobilePhone: '',
-    errorMessage: null
+    errorMessage: null,
+    referrerExist: false
   };
 
   handleSignUp = () => {
-    const { email, password } = this.state;
-    this.props.firebase
-      .auth()
-      .createUserAndRetrieveDataWithEmailAndPassword(email, password)
-      .then(() => {})
-      .catch(error => this.setState({ errorMessage: error.message }));
-  };
+    const {
+      email,
+      password,
+      referrer,
+      firstName,
+      lastName,
+      mobilePhone
+    } = this.state;
 
-  handleSignIn = () => {
-    const { email, password } = this.state;
-    this.props.firebase
-      .auth()
-      .signInAndRetrieveDataWithEmailAndPassword(email, password)
-      .then(() => {})
-      .catch(error => this.setState({ errorMessage: error.message }));
+    console.log('STATE: ', this.state);
+
+    if (!checkReferrerExist()) {
+      this.props.alertWithType(
+        'error',
+        'Referral ID not found!',
+        'Please confirm with your referrer'
+      );
+    }
+
+    // this.props.firebase
+    //   .auth()
+    //   .createUserAndRetrieveDataWithEmailAndPassword(email, password)
+    //   .then(() => {})
+    //   .catch(error => this.setState({ errorMessage: error.message }));
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Image
-          style={{
-            alignSelf: 'center',
-            // marginBottom: 20,
-            width: 120,
-            height: 120,
-            resizeMode: 'contain'
-          }}
-          source={require('../../images/logo.png')}
-        />
+        <Image style={styles.logo} source={require('../../images/logo.png')} />
         {this.state.errorMessage ? (
           <Text style={{ fontSize: 16, color: 'tomato' }}>
             {this.state.errorMessage}
           </Text>
         ) : (
           <Text style={{ fontSize: 16, color: '#FFFFFF' }}>
-            Create or sign in your account
+            Create your account
           </Text>
         )}
 
         <TextInput
-          label="Refferer"
+          label="Referral ID"
           placeholder="YINCoin_123"
           autoCapitalize="none"
           value={this.state.referrer}
@@ -79,7 +84,6 @@ class SignUpView extends React.Component<{ firebase: any }> {
           autoCapitalize="none"
           value={this.state.email}
           onChangeText={email => this.setState({ email })}
-          // keyboardAppearance="dark"
           theme={{
             colors: {
               disabled: '#b4c1c8',
@@ -93,7 +97,6 @@ class SignUpView extends React.Component<{ firebase: any }> {
           autoCapitalize="none"
           value={this.state.password}
           onChangeText={password => this.setState({ password })}
-          // keyboardAppearance="dark"
           secureTextEntry
           theme={{
             colors: {
@@ -145,10 +148,11 @@ class SignUpView extends React.Component<{ firebase: any }> {
 
         <View
           style={{
-            flexDirection: 'row',
-            alignSelf: 'stretch',
-            justifyContent: 'center',
-            marginBottom: 16
+            // flexDirection: 'row',
+            // alignSelf: 'stretch',
+            alignItems: 'center',
+            justifyContent: 'center'
+            // marginBottom: 16
           }}
         >
           <Button
@@ -160,14 +164,13 @@ class SignUpView extends React.Component<{ firebase: any }> {
           >
             Sign Up
           </Button>
+
           <Button
-            style={styles.button}
-            onPress={this.handleSignIn}
             primary
             dark
-            raised
+            onPress={() => this.props.navigation.navigate('LogIn')}
           >
-            Log In
+            Go to Login
           </Button>
         </View>
       </View>
@@ -175,4 +178,4 @@ class SignUpView extends React.Component<{ firebase: any }> {
   }
 }
 
-export default firebaseConnect()(SignUpView);
+export default compose(withNavigation, withFirebase)(connectAlert(SignUpView));
