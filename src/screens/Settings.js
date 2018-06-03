@@ -7,22 +7,20 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
-  Paragraph
+  DialogTitle
 } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { withNavigation } from 'react-navigation';
-import { firebaseConnect, withFirebase, isLoaded } from 'react-redux-firebase';
+import { withFirebase } from 'react-redux-firebase';
 
-class Settings extends React.Component {
+class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      displayName: '',
-      tempName: '',
+      tempPhoneNumber: '',
       errorMessage: null,
       visible: false
     };
@@ -35,60 +33,64 @@ class Settings extends React.Component {
     this.props.firebase.logout();
   };
 
-  // TODO: updated displayName in FB & render on screen
+  // TODO: updated tempPhoneNumber in FB & render on screen
   updateName = () => {
-    console.log('Update name dialog');
-    const user = this.props.firebase.auth().currentUser;
+    console.log('Update phone dialog ', profile.phoneNumber);
+
     user
       .updateProfile({
-        displayName: this.state.tempName
+        tempPhoneNumber: this.state.tempPhoneNumber
       })
-      .then(function () {
-        const name = this.state.tempName;
-        this.setState({ displayName: name });
-        console.log('state: ', this.state);
+      .then(() => {
+        // const name = this.state.tempPhoneNumber;
+        // this.setState({ tempPhoneNumber: name });
+        // console.log('state: ', this.state);
       })
       .catch((error) => {});
     this._hideDialog();
   };
 
   render() {
-    const { auth } = this.props;
+    const { profile } = this.props;
     const { visible } = this.state;
-
     return (
       <ScrollView>
         <Dialog visible={visible} onDismiss={this._hideDialog}>
-          <DialogTitle>Change Display Name</DialogTitle>
+          <DialogTitle>更改手机号码 </DialogTitle>
           <DialogContent>
             <TextInput
-              label="Name"
-              value={this.state.tempName}
-              onChangeText={tempName => this.setState({ tempName })}
+              label="手机号码"
+              value={this.state.tempPhoneNumber}
+              onChangeText={tempPhoneNumber =>
+                this.setState({ tempPhoneNumber })
+              }
             />
           </DialogContent>
 
           <DialogActions>
-            <Button onPress={this.updateName}>Confirm</Button>
-            <Button onPress={this._hideDialog}>Cancel</Button>
+            <Button>确定</Button>
+            <Button onPress={this._hideDialog}>取消</Button>
           </DialogActions>
         </Dialog>
         <List>
           <ListItem
             title="名字"
-            rightTitle={auth.displayName}
-            // onPress={this._showDialog}
+            rightTitle={`${profile.lastName} ${profile.firstName}`}
           />
-          <ListItem title="電郵" rightTitle={auth.email} />
-          <ListItem title="手機號碼" rightTitle={auth.phoneNumber} />
-          <ListItem title="密碼設置" />
-          <ListItem title="指紋保護" />
-          <ListItem title="隱私設置" />
-          <ListItem title="語言" />
+          <ListItem title="电邮" rightTitle={profile.email} />
+          <ListItem
+            title="手机号码"
+            rightTitle={profile.phoneNumber}
+            onPress={this._showDialog}
+          />
+          <ListItem title="密码设置" />
+          <ListItem title="指纹保护" />
+          <ListItem title="隐私设置" />
+          <ListItem title="语言" />
         </List>
 
         <List>
-          <ListItem title="關於" />
+          <ListItem title="关于" />
         </List>
 
         <List>

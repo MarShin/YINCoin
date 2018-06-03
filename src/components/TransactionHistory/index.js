@@ -23,10 +23,10 @@ class TransactionHistory extends Component {
       <View>
         <View style={styles.container}>
           <Button raised onPress={() => console.log('Pressed')}>
-            Fixed
+            存币
           </Button>
           <Button raised onPress={() => console.log('Pressed')}>
-            Trading
+            可用币
           </Button>
         </View>
 

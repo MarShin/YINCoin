@@ -3,19 +3,13 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class Contacts extends React.Component<Props, State> {
-  static title = 'Floating Action Button';
-
-  render() {
-    return (
-      <View style={[styles.container]}>
-        <View style={styles.row}>
-          <Text>Coming soon </Text>
-        </View>
-      </View>
-    );
-  }
-}
+const Contacts = () => (
+  <View style={[styles.container]}>
+    <View style={styles.row}>
+      <Text>会员朋友名单</Text>
+    </View>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

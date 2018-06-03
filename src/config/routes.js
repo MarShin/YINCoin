@@ -34,7 +34,7 @@ export const MeStack = createStackNavigator({
   Settings: {
     screen: Settings,
     navigationOptions: {
-      title: '設定'
+      title: '设定'
     }
   }
 });
@@ -44,14 +44,14 @@ export const HomeNavigator = createMaterialBottomTabNavigator(
     Landing: {
       screen: LandingStack,
       navigationOptions: {
-        tabBarLabel: '首頁',
+        tabBarLabel: '首页',
         tabBarIcon: ({ tintColor }) => createMaterialIcon('home', tintColor, 24)
       }
     },
     Transactions: {
       screen: Transactions,
       navigationOptions: {
-        tabBarLabel: '交易',
+        tabBarLabel: '历史',
         tabBarIcon: ({ tintColor }) => createMaterialIcon('info', tintColor, 24)
       }
     },

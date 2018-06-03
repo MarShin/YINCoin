@@ -5,7 +5,11 @@ const bannerWidth = Dimensions.get('window').width;
 
 const styles = EStyleSheet.create({
   container: {
-    height: 80
+    height: 90
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 });
 

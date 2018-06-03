@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Toolbar, ToolbarContent, ToolbarAction } from 'react-native-paper';
 
@@ -14,10 +15,14 @@ class WelcomeBanner extends Component {
   };
 
   render() {
-    console.log('Welcome banner: ', this.props.profile);
+    const { firstName, lastName } = this.props.profile;
     return (
       <Toolbar style={styles.container}>
-        <ToolbarContent title="Welcome!" subtitle="Martin Shin" />
+        <ToolbarContent
+          subtitleStyle={styles.subtitle}
+          title="红胤会"
+          subtitle={firstName && lastName && `${firstName} ${lastName}`}
+        />
         <ToolbarAction icon="search" onPress={this.onSearch} />
         <ToolbarAction icon="notifications" onPress={this.onNotifications} />
       </Toolbar>
@@ -25,5 +30,4 @@ class WelcomeBanner extends Component {
   }
 }
 
-// export default WelcomeBanner;
 export default connect(({ firebase: { profile } }) => ({ profile }))(WelcomeBanner);

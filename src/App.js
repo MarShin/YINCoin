@@ -43,8 +43,6 @@ const theme = {
   }
 };
 
-// export default () => <Root />;
-
 export default () => (
   <ReduxProvider store={store}>
     <PaperProvider theme={theme}>
