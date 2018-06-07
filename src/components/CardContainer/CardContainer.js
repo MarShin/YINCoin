@@ -18,61 +18,23 @@ class CardContainer extends Component {
     isFocused: false
   };
 
-  componentDidMount() {
-    this.props.navigation.addListener('didFocus', () => {
-      this.setState({ isFocused: true });
-    });
-    this.props.navigation.addListener('willBlur', () => {
-      this.setState({ isFocused: false });
-    });
-  }
-
   render() {
-    const FAB = (
-      <FABGroup
-        style={styles.fabContainer}
-        open={this.state.open}
-        icon={this.state.open ? 'phone' : 'add'}
-        label="Email"
-        actions={[
-          { icon: 'email', label: 'Email', onPress: () => {} },
-          { icon: 'notifications', label: 'Remind', onPress: () => {} }
-        ]}
-        onStateChange={({ open }) => this.setState({ open })}
-        onPress={() => {
-          if (this.state.open) {
-            // do something if the speed dial is open
-            console.log('specifically press phone button');
-          }
-        }}
-      />
-    );
-
     return (
       <ScrollView style={styles.container}>
         <Card>
           <CardContent>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
+            <Title>水舞间</Title>
+            <Paragraph>感受水舞澎湃，兼享环球美馔‎</Paragraph>
           </CardContent>
-          <CardCover source={{ uri: 'https://picsum.photos/300' }} />
-          <CardActions>
-            <Button>Cancel</Button>
-            <Button>Ok</Button>
-          </CardActions>
+          <CardCover source={require('../../images/home_placeholder1.png')} />
         </Card>
         <Card>
           <CardContent>
-            <Title>Card title</Title>
-            <Paragraph>Card content</Paragraph>
+            <Title>阿尔乔姆水晶虎宫殿</Title>
+            <Paragraph>不一样的旅游体验‎</Paragraph>
           </CardContent>
-          <CardCover source={{ uri: 'https://picsum.photos/400' }} />
-          <CardActions>
-            <Button>Cancel</Button>
-            <Button>Ok</Button>
-          </CardActions>
+          <CardCover source={require('../../images/home_placeholder2.png')} />
         </Card>
-        {/* {this.state.isFocused ? FAB : null} */}
       </ScrollView>
     );
   }

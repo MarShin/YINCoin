@@ -8,7 +8,7 @@ import { WelcomeBanner } from '../components/WelcomeBanner';
 import { CardContainer } from '../components/CardContainer';
 
 const PhoneButton = () => (
-  <FAB style={styles.fab} medium icon="phone" onPress={() => {}} />
+  <FAB style={styles.fab} icon="phone" onPress={() => {}} />
 );
 
 const fabTop = Dimensions.get('window').height * 0.8;
@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: fabTop,
     left: fabLeft,
-    backgroundColor: '#E72B22'
+    backgroundColor: '#E72B22',
+    width: 60,
+    height: 60
   }
 });
 

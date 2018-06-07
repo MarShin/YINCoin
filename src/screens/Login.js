@@ -41,7 +41,7 @@ class LogIn extends React.Component<{ firebase: any }> {
             justifyContent: 'center'
           }}
         >
-          <StatusBar barStyle="light-content" />
+          <StatusBar barStyle="dark-content" />
           <LogInView />
         </Background>
       </TouchableWithoutFeedback>
