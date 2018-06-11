@@ -23,7 +23,7 @@ class LogIn extends React.Component<{ firebase: any }> {
       .signInAndRetrieveDataWithEmailAndPassword(email, password)
       .then(() => {})
       .catch(error =>
-        this.props.alertWithType('error', 'Log In Failed!', error.message));
+        this.props.alertWithType('error', '登入失败！', error.message));
   };
 
   render() {

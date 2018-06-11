@@ -77,7 +77,7 @@ export const HomeNavigator = createMaterialBottomTabNavigator(
     }
   },
   {
-    initialRouteName: 'Me',
+    initialRouteName: 'Landing',
     activeTintColor: '#E72B22',
     barStyle: {
       backgroundColor: '#F0EFF5',

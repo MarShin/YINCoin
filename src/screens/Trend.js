@@ -20,6 +20,7 @@ class Trend extends Component {
     const { active } = this.state;
     return (
       <ScrollView>
+        <Sample />
         <Image
           source={require('../images/trend.png')}
           style={{
@@ -35,8 +36,6 @@ class Trend extends Component {
             }}
           />
         </Card> */}
-
-        <Sample />
       </ScrollView>
     );
   }

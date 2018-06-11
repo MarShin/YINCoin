@@ -29,8 +29,8 @@ EStyleSheet.build({
   $regularOrange: '#F5BC23',
   $lightOrange: '#FFCC2D',
 
-  $white: '#FFFFFF',
-  $outline: 1
+  $white: '#FFFFFF'
+  // $outline: 1
 });
 
 const theme = {

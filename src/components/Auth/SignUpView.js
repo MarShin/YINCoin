@@ -88,9 +88,9 @@ class SignUpView extends React.Component<{ firebase: any }> {
 
       // Update Referral collection: Referrer's children array & new User entry
       this.updateReferralCollection(userName);
-      this.props.alertWithType('info', 'This is a prototye', '');
+      this.props.alertWithType('info', '这是一个樣本', '');
     } catch (error) {
-      this.props.alertWithType('error', 'Sign Up Failed!', error.message);
+      this.props.alertWithType('error', '注册失败!', error.message);
       console.log('ERROR: ', error.message);
     }
   };
@@ -188,7 +188,7 @@ class SignUpView extends React.Component<{ firebase: any }> {
           <Button
             primary
             dark
-            onPress={() => this.props.navigation.navigate('LogIn')}
+            onPress={() => this.props.navigation.navigate('Login')}
           >
             去登入
           </Button>

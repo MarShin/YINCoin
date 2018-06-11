@@ -22,7 +22,6 @@ class Me extends Component {
         <ScrollView>
           <Balance />
           <List>
-            <ListItem title="会员号码" />
             <ListItem title="设定" onPress={this.handleSettingsPress} />
           </List>
         </ScrollView>
