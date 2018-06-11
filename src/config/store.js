@@ -11,17 +11,10 @@ import rootReducer from '../reducers';
 const initialState = {};
 
 const reduxFirebaseConfig = {
-  userProfile: 'dummy-users',
+  userProfile: 'users',
   enableLogging: true,
   enableRedirectHandling: false, // http://react-redux-firebase.com/docs/integrations/react-native.html
   useFirestoreForProfile: true
-  // profileFactory: (userData, profileData) => {
-  //   console.log('Firestore user data: ', userData);
-  //   console.log();
-  //   console.log('Firstore profile data: ', profileData);
-  //   const { user } = userData;
-  //   return { ...user, ...profileData };
-  // }
 };
 
 const store = createStore(

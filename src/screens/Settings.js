@@ -76,21 +76,23 @@ class Settings extends Component {
           <ListItem
             title="名字"
             rightTitle={`${profile.lastName} ${profile.firstName}`}
+            hideChevron
           />
-          <ListItem title="电邮" rightTitle={profile.email} />
+          <ListItem title="电邮" rightTitle={profile.email} hideChevron />
           <ListItem
             title="手机号码"
             rightTitle={profile.phoneNumber}
-            onPress={this._showDialog}
+            // onPress={this._showDialog}
+            hideChevron
           />
-          <ListItem title="密码设置" />
-          <ListItem title="指纹保护" />
-          <ListItem title="隐私设置" />
-          <ListItem title="语言" />
+          <ListItem title="密码设置" hideChevron />
+          <ListItem title="指纹保护" hideChevron />
+          <ListItem title="隐私设置" hideChevron />
+          <ListItem title="语言" hideChevron />
         </List>
 
         <List>
-          <ListItem title="关于" />
+          <ListItem title="关于" hideChevron />
         </List>
 
         <List>

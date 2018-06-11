@@ -17,10 +17,6 @@ class ReferralView extends React.Component<{ firebase: any }> {
     referralID: ''
   };
 
-  componentDidMount() {
-    // this.updateReferralCollection();
-  }
-
   updateReferralCollection = (userName = 'martin') => {
     const firestore = this.props.firestore;
     // const referralID = this.props.referralID;
@@ -52,8 +48,8 @@ class ReferralView extends React.Component<{ firebase: any }> {
         if (!doc.exists) {
           this.props.alertWithType(
             'error',
-            'Referral ID not found!',
-            'Please confirm with your Referrer'
+            '未找到推荐人号码!',
+            '请与您的推荐人确认'
           );
           this.props.dispatch(referrerNotExist());
         } else {
@@ -76,7 +72,7 @@ class ReferralView extends React.Component<{ firebase: any }> {
         <Image style={styles.logo} source={require('../../images/logo.png')} />
 
         <TextInput
-          label="推荐人编号"
+          label="推荐人号码"
           placeholder="YINCoin_123"
           autoCapitalize="none"
           value={this.state.referralID}
@@ -102,15 +98,15 @@ class ReferralView extends React.Component<{ firebase: any }> {
             dark
             raised
           >
-            搜查推荐人编号
+            搜查推荐人号码
           </Button>
 
           <Button
             primary
             dark
-            onPress={() => this.props.navigation.navigate('LogIn')}
+            onPress={() => this.props.navigation.navigate('Login')}
           >
-            去会员注册
+            去登入
           </Button>
         </View>
       </KeyboardAwareScrollView>
