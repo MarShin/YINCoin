@@ -10,7 +10,8 @@ import { AlertProvider } from './components/Alert';
 
 YellowBox.ignoreWarnings([
   'Warning: isMounted(...) is deprecated',
-  'Module RCTImageLoader requires'
+  'Module RCTImageLoader requires',
+  'Deprecated firebase.User.prototype.createUserWithEmailAndPassword'
 ]);
 
 EStyleSheet.build({

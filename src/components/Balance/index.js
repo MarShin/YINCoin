@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Clipboard, View, StyleSheet } from 'react-native';
 import { Title } from 'react-native-paper';
-import { List, ListItem } from 'react-native-elements';
+import { Icon, List, ListItem } from 'react-native-elements';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import { withFirebase } from 'react-redux-firebase';
 
 import { connectAlert } from '../Alert';
+
+import { createMaterialIcon } from '../../utils/createIcon';
 
 class Balance extends Component {
   constructor(props) {
@@ -34,7 +36,28 @@ class Balance extends Component {
     const { profile } = this.props;
     return (
       <View>
-        <Title style={{ paddingHorizontal: 15 }}>胤币</Title>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Title style={{ paddingHorizontal: 15 }}>胤币</Title>
+          <View
+            style={{
+              flexDirection: 'row',
+              paddingHorizontal: 10,
+              justifyContent: 'space-around'
+            }}
+          >
+            <Icon
+              containerStyle={{ padding: 4 }}
+              type="material-community"
+              name="qrcode"
+            />
+            <Icon
+              containerStyle={{ padding: 4 }}
+              type="ionicon"
+              name="ios-qr-scanner"
+            />
+          </View>
+        </View>
+
         <List>
           <ListItem title="总币量" subtitle={profile.total} hideChevron />
           <ListItem title="存币" subtitle={profile.fixed} hideChevron />
