@@ -76,7 +76,7 @@ class ReferralView extends React.Component<{ firebase: any }> {
         <Image style={styles.logo} source={require('../../images/logo.png')} />
 
         <TextInput
-          label="推荐人编号"
+          label="推荐人号码"
           placeholder="YINCoin_123"
           autoCapitalize="none"
           value={this.state.referralID}
@@ -102,7 +102,7 @@ class ReferralView extends React.Component<{ firebase: any }> {
             dark
             raised
           >
-            搜查推荐人编号
+            搜查推荐人号码
           </Button>
 
           <Button

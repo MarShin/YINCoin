@@ -14,7 +14,7 @@ import { withNavigation } from 'react-navigation';
 import Background from '../components/Background';
 import { LogInView } from '../components/Auth';
 
-class LogIn extends React.Component<{ firebase: any }> {
+class Login extends React.Component<{ firebase: any }> {
   state = {
     email: '',
     password: '',
@@ -49,4 +49,4 @@ class LogIn extends React.Component<{ firebase: any }> {
   }
 }
 
-export default LogIn;
+export default Login;

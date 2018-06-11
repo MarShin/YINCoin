@@ -11,6 +11,7 @@ import {
   FABGroup
 } from 'react-native-paper';
 import { withNavigation } from 'react-navigation';
+import Sample from '..//Sample';
 
 class CardContainer extends Component {
   state = {
@@ -35,6 +36,7 @@ class CardContainer extends Component {
           </CardContent>
           <CardCover source={require('../../images/home_placeholder2.png')} />
         </Card>
+        <Sample />
       </ScrollView>
     );
   }
@@ -42,7 +44,8 @@ class CardContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#F0EFF5'
   },
   row: {
     flex: 1,

@@ -1,19 +1,17 @@
 import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-import {
-  createMaterialIcon,
-  createMaterialCommunityIcon
-} from '../utils/createIcon';
+import { createMaterialIcon } from '../utils/createIcon';
 
 import Home from '../screens/Home';
 
-import Settings from '../screens/Settings';
 import Me from '../screens/Me';
+import Trend from '../screens/Trend';
+import Settings from '../screens/Settings';
 import Transactions from '../screens/Transactions';
 import Contacts from '../screens/Contacts';
 
-import LogIn from '../screens/LogIn';
+import Login from '../screens/Login';
 import Loading from '../screens/Loading';
 import SignUp from '../screens/SignUp';
 
@@ -35,6 +33,12 @@ export const MeStack = createStackNavigator({
     screen: Settings,
     navigationOptions: {
       title: '设定'
+    }
+  },
+  Trend: {
+    screen: Trend,
+    navigationOptions: {
+      title: '趋势图'
     }
   }
 });
@@ -73,7 +77,7 @@ export const HomeNavigator = createMaterialBottomTabNavigator(
     }
   },
   {
-    initialRouteName: 'Landing',
+    initialRouteName: 'Me',
     activeTintColor: '#E72B22',
     barStyle: {
       backgroundColor: '#F0EFF5',
@@ -99,7 +103,7 @@ export const Root = createSwitchNavigator(
   {
     Loading,
     SignUp,
-    LogIn,
+    Login,
     AppNavigator
   },
   {

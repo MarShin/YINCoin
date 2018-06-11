@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 import { ButtonGroup } from 'react-native-elements';
+import Sample from '../Sample';
 
 class TransactionHistory extends Component {
   constructor() {
@@ -16,40 +17,29 @@ class TransactionHistory extends Component {
     this.setState({ selectedIndex });
   }
   render() {
-    const buttons = ['Fixed', 'Trading'];
+    const buttons = ['存币', '可用币'];
     const { selectedIndex } = this.state;
 
     return (
-      <View>
-        <View style={styles.container}>
-          <Button raised onPress={() => console.log('Pressed')}>
-            存币
-          </Button>
-          <Button raised onPress={() => console.log('Pressed')}>
-            可用币
-          </Button>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between'
+        }}
+      >
+        <View>
+          <ButtonGroup
+            onPress={this.updateIndex}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+            containerStyle={{ marginTop: 20, height: 30 }}
+          />
         </View>
-
-        <ButtonGroup
-          onPress={this.updateIndex}
-          selectedIndex={selectedIndex}
-          buttons={buttons}
-          containerStyle={{ height: 30 }}
-        />
+        <Sample />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    padding: 8,
-    height: 80,
-    elevation: 2
-  }
-});
 
 export default TransactionHistory;
