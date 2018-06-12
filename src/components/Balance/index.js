@@ -61,7 +61,7 @@ class Balance extends Component {
         <List>
           <ListItem title="总币量" subtitle={profile.total} hideChevron />
           <ListItem title="存币" subtitle={profile.fixed} hideChevron />
-          <ListItem title="可用币" subtitle={profile.trading} hideChevron />
+          <ListItem title="活用币" subtitle={profile.trading} hideChevron />
           <ListItem title="趋势图" onPress={this.handleTrendPress} />
         </List>
         <List>
