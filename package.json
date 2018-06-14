@@ -24,6 +24,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator='iPhone 8'",
+    "build-android": "cd android && ./gradlew assembleRelease && cd ../ && open ./android/app/build/outputs/apk",
     "rename": "node ./bin/rename.js",
     "start": "react-native start",
     "test": "jest"
