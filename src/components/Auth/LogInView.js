@@ -5,9 +5,9 @@ import { TextInput, Button } from 'react-native-paper';
 import { withFirebase, firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'recompose';
 import { withNavigation } from 'react-navigation';
-import { connectAlert } from '../Alert';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import { connectAlert } from '../Alert';
 import styles from './styles';
 
 class LogIn extends React.Component<{ firebase: any }> {
